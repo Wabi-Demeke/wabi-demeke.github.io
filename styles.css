@@ -587,3 +587,19 @@ ul { list-style: none; }
 @media (max-width: 768px) {
   .pub-thumb { width: 100%; height: 160px; }
 }
+
+/* ===== Year above thumbnail layout ===== */
+.pub-item:has(.pub-thumb) {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 24px; row-gap: 8px;
+  align-items: start;
+}
+.pub-item:has(.pub-thumb) .pub-year { grid-column: 1; grid-row: 1; width: auto; text-align: left; padding-top: 0; }
+.pub-item:has(.pub-thumb) .pub-thumb { grid-column: 1; grid-row: 2; }
+.pub-item:has(.pub-thumb) .pub-content { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 768px) {
+  .pub-item:has(.pub-thumb) { grid-template-columns: 1fr; }
+  .pub-item:has(.pub-thumb) .pub-content { grid-column: 1; grid-row: 3; }
+}
